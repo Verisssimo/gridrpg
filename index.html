@@ -17,6 +17,19 @@
     font-family: 'Times New Roman', serif;
     font-size: 152px;
     color: white;
+    animation: changeText 1s infinite;
+  }
+
+  @keyframes changeText {
+    0%, 100% {
+      content: "";
+    }
+    25% {
+      content: attr(data-text);
+    }
+    75% {
+      content: "";
+    }
   }
 </style>
 <script>
@@ -34,7 +47,7 @@
   // Atualiza o texto a cada 1 segundo
   function updateText() {
     const textElement = document.getElementById('random-text');
-    textElement.textContent = generateRandomString();
+    textElement.setAttribute('data-text', generateRandomString());
   }
 
   // Atualiza o texto inicial e, em seguida, o atualiza a cada 1 segundo
@@ -43,6 +56,6 @@
 </script>
 </head>
 <body>
-  <div id="random-text"></div>
+  <div id="random-text" data-text=""></div>
 </body>
 </html>
