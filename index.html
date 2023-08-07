@@ -30,10 +30,25 @@
 
   function updateRandomString() {
     const div = document.getElementById('random-string');
-    div.textContent = generateRandomString(16);
+    const randomString = generateRandomString(16);
+    let coloredString = '';
+    
+    for (let i = 0; i < randomString.length; i++) {
+      const colorChange = Math.random() < 0.5 ? 'black' : 'white';
+      coloredString += `<span style="color: ${colorChange};">${randomString[i]}</span>`;
+    }
+    
+    div.innerHTML = coloredString;
+
+    setTimeout(() => {
+      const spans = div.getElementsByTagName('span');
+      for (let i = 0; i < spans.length; i++) {
+        spans[i].style.color = 'white';
+      }
+    }, 150);
   }
 
-  setInterval(updateRandomString, 300);
+  setInterval(updateRandomString, 1000);
 </script>
 </head>
 <body>
