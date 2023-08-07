@@ -31,15 +31,15 @@
     return randomString;
   }
 
-  // Atualiza o texto inicial e define-o para a div
+  // Atualiza o texto a cada 1 segundo
   function updateText() {
     const textElement = document.getElementById('random-text');
     textElement.textContent = generateRandomString();
   }
 
-  // Atualiza o texto inicial e, em seguida, o atualiza a cada 3 segundos
+  // Atualiza o texto inicial e, em seguida, o atualiza a cada 1 segundo
   updateText();
-  setInterval(updateText, 3000);
+  setInterval(updateText, 1000);
 </script>
 </head>
 <body>
