@@ -11,13 +11,21 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f0f0f0;
+            background-color: #000;
+        }
+        
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
         }
         
         .countdown {
             display: flex;
             align-items: center;
             font-size: 152px;
+            color: #fff;
         }
         
         .countdown-item {
@@ -27,12 +35,14 @@
     <title>Contagem Regressiva</title>
 </head>
 <body>
-    <div class="countdown">
-        <div class="countdown-item" id="hours">00</div>
-        <div class="countdown-item">:</div>
-        <div class="countdown-item" id="minutes">00</div>
-        <div class="countdown-item">:</div>
-        <div class="countdown-item" id="seconds">00</div>
+    <div class="overlay">
+        <div class="countdown">
+            <div class="countdown-item" id="hours">00</div>
+            <div class="countdown-item">:</div>
+            <div class="countdown-item" id="minutes">00</div>
+            <div class="countdown-item">:</div>
+            <div class="countdown-item" id="seconds">00</div>
+        </div>
     </div>
     <script>
         function updateCountdown() {
