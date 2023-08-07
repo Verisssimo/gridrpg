@@ -3,50 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contador Regressivo</title>
 <style>
   body {
     background-color: black;
-    font-family: "Times New Roman", serif;
+    font-family: 'Times New Roman', Times, serif;
     color: white;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
   }
+
   .countdown {
     font-size: 152px;
-    margin-top: 100px;
-  }
-  .message {
-    font-size: 54px;
-    margin-top: 20px;
   }
 </style>
+<title>Contagem Regressiva</title>
 </head>
 <body>
-  <div class="countdown" id="countdown"></div>
-  <div class="message">Em breve</div>
+<div class="countdown" id="countdown"></div>
+<script>
+  // Define a data-alvo da contagem regressiva
+  const targetDate = new Date('2023-08-10T19:00:00').getTime();
 
-  <script>
-    // Data alvo do contador (08/08/2023 às 00:00)
-    const targetDate = new Date("2023-08-08T00:00:00").getTime();
+  // Atualiza a contagem a cada segundo
+  const countdownInterval = setInterval(() => {
+    const currentDate = new Date().getTime();
+    const timeLeft = targetDate - currentDate;
 
-    // Atualiza o contador a cada segundo
-    const interval = setInterval(function() {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      document.getElementById('countdown').innerHTML = 'Tempo esgotado!';
+    } else {
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("countdown").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-      // Quando a contagem regressiva terminar
-      if (distance < 0) {
-        clearInterval(interval);
-        document.getElementById("countdown").innerHTML = "Tempo expirado!";
-      }
-    }, 1000);
-  </script>
+      document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+  }, 1000);
+</script>
 </body>
 </html>
