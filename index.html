@@ -36,11 +36,11 @@
       clearInterval(countdownInterval);
       document.getElementById('countdown').innerHTML = 'Tempo esgotado!';
     } else {
-      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
 
-      document.getElementById('countdown').innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+      document.getElementById('countdown').innerHTML = `${hours}:${minutes}:${seconds}`;
     }
   }, 1000);
 </script>
