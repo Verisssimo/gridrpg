@@ -20,35 +20,26 @@
   }
 </style>
 <script>
-  function getRandomChar() {
-    const chars = "!@#$%^&*()_+1234567890-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const randomIndex = Math.floor(Math.random() * chars.length);
-    return chars[randomIndex];
+  // Função para gerar uma sequência aleatória de 16 caracteres
+  function generateRandomString() {
+    const characters = "!@#$%^&*()_+1234567890-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let randomString = '';
+    for (let i = 0; i < 16; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      randomString += characters.charAt(randomIndex);
+    }
+    return randomString;
   }
 
-  function getRandomDelay() {
-    return Math.random() * 1000 + 500;
-  }
-
+  // Atualiza o texto inicial e define-o para a div
   function updateText() {
     const textElement = document.getElementById('random-text');
-    const newText = [];
-    for (let i = 0; i < 16; i++) {
-      setTimeout(() => {
-        newText[i] = getRandomChar();
-        textElement.textContent = newText.join('');
-        textElement.style.color = getRandomColor();
-      }, getRandomDelay());
-    }
+    textElement.textContent = generateRandomString();
   }
 
-  function getRandomColor() {
-    const colors = ['#FF5733', '#C70039', '#900C3F', '#581845', '#283747', '#2E4053', '#212F3D'];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  }
-
-  setInterval(updateText, 1000);
+  // Atualiza o texto inicial e, em seguida, o atualiza a cada 3 segundos
+  updateText();
+  setInterval(updateText, 3000);
 </script>
 </head>
 <body>
