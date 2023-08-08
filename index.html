@@ -1,45 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contagem Regressiva</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: black;
-    font-family: 'Times New Roman', serif;
-    font-size: 152px;
-    color: white;
-  }
-</style>
+  <style>
+    body {
+      background-color: black;
+      font-family: "Times New Roman", Times, serif;
+      text-align: center;
+    }
+    
+    .clock {
+      font-size: 152px;
+      color: white;
+      margin-bottom: 20px;
+    }
+  </style>
 </head>
 <body>
-<div id="countdown"></div>
-<script>
-  function updateCountdown() {
-    const targetDate = new Date("2023-08-10T19:00:00");
-    const currentDate = new Date();
-    const remainingTime = targetDate - currentDate;
+  <div class="clock" id="brasiliaClock"></div>
+  <div class="clock" id="parisClock"></div>
 
-    if (remainingTime <= 0) {
-      document.getElementById("countdown").innerHTML = "Obrigado por esperar!";
-    } else {
-      const hours = Math.floor(remainingTime / (1000 * 60 * 60));
-      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+  <script>
+    function updateClocks() {
+      const brasiliaTime = new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
+      const parisTime = new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" });
 
-      document.getElementById("countdown").innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      setTimeout(updateCountdown, 1000);
+      document.getElementById("brasiliaClock").textContent = brasiliaTime;
+      document.getElementById("parisClock").textContent = parisTime;
     }
-  }
 
-  updateCountdown();
-</script>
+    setInterval(updateClocks, 1); // Atualiza a cada milissegundo
+  </script>
 </body>
 </html>
