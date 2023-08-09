@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <style>
-    body {
-      background-color: black;
-      font-family: "Times New Roman", Times, serif;
-      text-align: center;
-    }
-    
-    .clock {
-      font-size: 152px;
-      color: white;
-      margin-bottom: 20px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>codigo fonte</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+    font-family: 'Times New Roman', serif;
+    font-size: 152px;
+    color: white;
+  }
+
+  #message {
+    font-size: 14px;
+    font-family: 'Times New Roman', serif;
+    color: gray;
+    margin-top: 10px;
+  }
+</style>
 </head>
 <body>
-  <div class="clock" id="brasiliaClock"></div>
-  <div class="clock" id="parisClock"></div>
+<div id="countdown"></div>
+<div id="message">Seu texto aqui</div>
+<script>
+  function updateCountdown() {
+    const targetDate = new Date("2023-08-10T19:30:00");
+    const currentDate = new Date();
+    const remainingTime = targetDate - currentDate;
 
-  <script>
-    function updateClocks() {
-      const brasiliaTime = new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
-      const parisTime = new Date().toLocaleString("en-US", { timeZone: "Europe/Paris" });
+    if (remainingTime <= 0) {
+      document.getElementById("countdown").innerHTML = "Obrigado por esperar!";
+    } else {
+      const hours = Math.floor(remainingTime / (1000 * 60 * 60));
+      const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
 
-      document.getElementById("brasiliaClock").textContent = brasiliaTime;
-      document.getElementById("parisClock").textContent = parisTime;
+      document.getElementById("countdown").innerHTML = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      setTimeout(updateCountdown, 1000);
     }
+  }
 
-    setInterval(updateClocks, 1); // Atualiza a cada milissegundo
-  </script>
+  updateCountdown();
+</script>
 </body>
 </html>
