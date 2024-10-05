@@ -177,37 +177,43 @@
         </div>
         
     <div class="section">
-        <h2>Censored Documents</h2>
-            <div class="document">
-                <p>IDENTIFICATION REQUIRED</p>
-                <p>Enter your identification to access files...</p>
-                    <form onsubmit="return verificarSenha(event);">
-                    <input type="password" id="senha" placeholder="Senha" required>
-                    <button type="submit">Submit</button>
-                    </form>
-                <p id="mensagem"></p>
-        </div>
+    <h2>Censored Documents</h2>
+    <div class="document">
+        <p>IDENTIFICATION REQUIRED</p>
+        <p>Enter your identification to access files...</p>
+        <form onsubmit="return verificarSenha(event);">
+            <input type="password" id="senha" placeholder="Senha" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="mensagem"></p>
     </div>
+</div>
 
 <script>
     function verificarSenha(event) {
         event.preventDefault(); // Previne o envio do formulário
-        const senhaCorreta = "12345"; // Defina a senha correta aqui
+        const senhas = {
+            "senha1": "pagina1.html",
+            "senha2": "pagina2.html",
+            "senha3": "pagina3.html"
+            // Adicione mais senhas e páginas conforme necessário
+        };
+
         const senhaUsuario = document.getElementById("senha").value;
         const mensagem = document.getElementById("mensagem");
 
-        if (senhaUsuario === senhaCorreta) {
-            // Redireciona para a página desejada
-            window.location.href = "outra_pagina.html";
+        if (senhas[senhaUsuario]) {
+            // Redireciona para a página correspondente
+            window.location.href = senhas[senhaUsuario];
         } else {
-            mensagem.textContent = "Senha incorreta! Tente novamente.";
+            mensagem.textContent = "Access denied.";
             mensagem.style.color = "red";
         }
     }
 </script>
 
     <footer>
-        Nimbus Project © 2024 | All rights reserved | Confidential documents
+        Nimbus Project © 2024 | All Rights Reserved | Confidential Documents
     </footer>
 </body>
 </html>
