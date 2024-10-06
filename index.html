@@ -62,6 +62,10 @@
             text-decoration: none;
         }
 
+        .hiden {
+            color: #191919;
+        }
+
         a:hover {
             text-decoration: underline;
         }
@@ -85,7 +89,7 @@
             <div class="document">
                 <p><strong>Data:</strong>June 15, 1819</p>
                 <p><strong>Status:</strong>CONFIDENTIAL</p>
-                <p><strong>Involved Parties:</strong>Dra. Evelyn Carten e Dr. Artur Miles.</p>
+                <p><strong>Involved Parties:</strong>Dra. Evelyn Carten and Dr. Artur Miles.</p>
                 <p><strong>Description:</strong>We need immediate attention for a critical situation. Dr. Victor Hartmann has been missing since last night, along with the transport vehicle designated for Project Nimbus. He left the research unit around 10:30 PM, claiming he was taking materials for analysis.</p>
                 <p>Attempts to communicate have failed, and the vehicle cannot be tracked due to the sensitivity of the project. Instruct the security team to initiate a discreet investigation, but the priority is to recover the vehicle and ensure that any documentation does not fall into the wrong hands. Commander Ward is already mobilizing a team to cover potential leaks and information breaches.</p>
                 <p>We cannot rule out any external involvement, including the Consortium or other parties interested in our advancements. National security is at risk.</p>
@@ -98,7 +102,7 @@
             <div class="document">
                 <p><strong>Data:</strong>June 15, 1819</p>
                 <p><strong>Status:</strong>CONFIDENTIAL</p>
-                <p><strong>Involved Parties:</strong>Dr. Artur Miles e Dra. Evelyn Carten.</p>
+                <p><strong>Involved Parties:</strong>Dr. Artur Miles and Dra. Evelyn Carten.</p>
                 <p><strong>Description:</strong>This situation is more serious than we imagined. If the Consortium is involved, we are dealing with something much larger than an isolated breach. I am initiating Protocol Omega-12 immediately. We cannot allow any materials related to Nimbus to be compromised. Order the elimination of our involvement with the project until things settle down.</p>
                 <p>Commander Ward will prioritize the recovery of the vehicle, and I will ensure that media coverage treats this only as a simple missing person case. I will activate some contacts to prevent any information from reaching the public.</p>
             </div>
@@ -110,7 +114,7 @@
             <div class="document">
                 <p><strong>Data:</strong>February 21, 1820</p>
                 <p><strong>Status:</strong>CONFIDENTIAL</p>
-                <p><strong>Involved Parties:</strong>Dra. Evelyn Carten e Dr. Artur Miles.</p>
+                <p><strong>Involved Parties:</strong>Dra. Evelyn Carten and Dr. Artur Miles.</p>
                 <p><strong>Description:</strong>We have reached eight months since the disappearance, and we still have nothing. All the leads we've followed have gone nowhere, and the tracking of personal communications and financial trails has been exhaustive for the entire team. I've given everyone time off until next week.</p>
                 <p>I recommend deactivating the project and implementing maximum confidentiality protocols. Our influence has been effective in avoiding unwanted attention. Ward's team is proposing a more aggressive investigative approach, seeking new contacts in the black market and international relations. I’m still concerned about the Consortium’s involvement.</p>
                 <p>We remain at the ready, but options are running thin. We need to decide the future of the project as soon as possible, considering that the answers may never come.</p>
@@ -125,7 +129,7 @@
                 <p><strong>Status:</strong>CONFIDENTIAL</p>
                 <p><strong>Involved Parties:</strong>All Involved in the Project Nimbus 1819</p>
                 <p><strong>Description:</strong>After deep consideration and due to recent events, the Nimbus project will be deactivated immediately. All data, records, and documents—whether physical or digital—must be destroyed without delay. Nothing is to remain.</p>
-                <p>Commander Ward is already coordinating the destruction of files at all our facilities, and this process will take several months. Any failure to follow these guidelines will be considered a direct violation of Omega-level security. The digital security system will be overhauled, and we will lose the memory of our dear friend Hartmann, who has remained active in the system since his disappearance.</p>
+                <p>Thomas Ward is already coordinating the destruction of files at all our facilities, and this process will take several months. Any failure to follow these guidelines will be considered a direct violation of Omega-level security. The digital security system will be overhauled, and we will lose the memory of our dear friend Hartmann, who has remained active in the system since his disappearance.</p>
             </div>
         </div>
 
@@ -167,7 +171,7 @@
 
     <div class="container">
         <div class="section">
-            <h2><color:red>Secret File: Nimbus return.</color:red></h2>
+            <h2>Secret File: Nimbus return.</h2>
             <div class="document">
                 <p><strong>Data:</strong>October 03, 2024</p>
                 <p><strong>Status:</strong>INTERNAL INFORMATION</p>
@@ -191,12 +195,14 @@
 
 <script>
     function verificarSenha(event) {
-        event.preventDefault(); // Previne o envio do formulário
+        event.preventDefault(); 
         const senhas = {
-            "EvelynCarter": "EC",
-            "senha2": "pagina2.html",
-            "Beetle": "Beetle.html"
-            // Adicione mais senhas e páginas conforme necessário
+            "carterevelyn@oregonlab.us": "EC.html",
+            "milesartur@oregonlab.us": "AM.html",
+            "hartmannvictor@oregonlab.us": "VH.html",
+            "wardthomas@oregonlab.us": "TW.html",
+            "a": "beetle.html",
+            // Adicione mais senhas e páginas
         };
 
         const senhaUsuario = document.getElementById("senha").value;
@@ -213,7 +219,7 @@
 </script>
 
     <footer>
-        Nimbus Project © 2024 | All Rights Reserved | Confidential Documents
+        Nimbus Project © 2024 | All Rights Reserved | Confidential Documents <span class=hiden> @oregonlab.us </span>    
     </footer>
 </body>
 </html>
