@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,19 @@
 </head>
 <body>
     <h1>Mapa de RPG</h1>
-    <div id="grid"></div>
+    <div class="grid" id="grid">
+        <!-- O grid será gerado via JavaScript -->
+    </div>
+
+    <div class="controls">
+        <button onclick="addToken('gabriel')">Adicionar Token Gabriel (Azul)</button>
+        <button onclick="addToken('vinicius')">Adicionar Token Vinícius (Verde)</button>
+        <button onclick="addToken('joao')">Adicionar Token João (Vermelho)</button>
+        <button onclick="addToken('joaozinho')">Adicionar Token Joãozinho (Amarelo)</button>
+        <button onclick="addToken('froy')">Adicionar Token Froy (Roxo)</button>
+        <button onclick="addToken('cinza')">Adicionar Token Cinza</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
