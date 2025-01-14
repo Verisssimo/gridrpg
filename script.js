@@ -1,53 +1,74 @@
-const players = {
-    Gabriel: { x: 0, y: 0, color: "blue" },
-    Vinícius: { x: 1, y: 0, color: "green" },
-    João: { x: 2, y: 0, color: "purple" },
-    Joãozinho: { x: 3, y: 0, color: "orange" },
-    Froy: { x: 4, y: 0, color: "red" }
-};
-
-const grid = document.getElementById("grid");
+// script.js
+const gridElement = document.getElementById('grid');
 const gridSize = 10;
+let tokens = {};
 
-// Cria o grid
-for (let y = 0; y < gridSize; y++) {
-    for (let x = 0; x < gridSize; x++) {
-        const cell = document.createElement("div");
-        cell.className = "cell";
-        cell.dataset.x = x;
-        cell.dataset.y = y;
-        grid.appendChild(cell);
+function createGrid() {
+    for (let i = 0; i < gridSize * gridSize; i++) {
+        const cell = document.createElement('div');
+        cell.dataset.index = i;
+        gridElement.appendChild(cell);
     }
 }
 
-// Coloca os tokens no grid
-function renderTokens() {
-    document.querySelectorAll(".token").forEach(token => token.remove());
-    for (const player in players) {
-        const { x, y, color } = players[player];
-        const cell = document.querySelector(.cell[data-x='${x}'][data-y='${y}']);
-        const token = document.createElement("div");
-        token.className = "token";
-        token.style.backgroundColor = color;
-        token.textContent = player[0]; // Primeira letra do nome do jogador
-        token.addEventListener("click", () => moveToken(player));
-        cell.appendChild(token);
-    }
+function createToken(color, id) {
+    const token = document.createElement('div');
+    token.classList.add('token');
+    token.style.backgroundColor = color;
+    token.dataset.id = id;
+    token.draggable = true;
+
+    token.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('tokenId', id);
+    });
+
+    return token;
 }
 
-// Move os tokens
-function moveToken(player) {
-    const direction = prompt(Mover ${player} (w/a/s/d):);
-    if (!direction) return;
+function addToken(player) {
+    const colors = {
+        gabriel: 'blue',
+        vinicius: 'green',
+        joao: 'red',
+        joaozinho: 'yellow',
+        froy: 'purple',
+        cinza: 'gray'
+    };
 
-    const { x, y } = players[player];
-    if (direction === "w" && y > 0) players[player].y--;
-    if (direction === "s" && y < gridSize - 1) players[player].y++;
-    if (direction === "a" && x > 0) players[player].x--;
-    if (direction === "d" && x < gridSize - 1) players[player].x++;
+    const tokenColor = colors[player];
+    const tokenId = player + '-' + Date.now();
+    const token = createToken(tokenColor, tokenId);
 
-    renderTokens();
+    tokens[tokenId] = { id: tokenId, color: tokenColor, position: -1 };
+    
+    const randomCellIndex = Math.floor(Math.random() * gridSize * gridSize);
+    tokens[tokenId].position = randomCellIndex;
+    
+    const cell = gridElement.children[randomCellIndex];
+    cell.appendChild(token);
 }
 
-// Renderiza os tokens inicialmente
-renderTokens();
+function setupDraggableTokens() {
+    gridElement.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
+
+    gridElement.addEventListener('drop', (e) => {
+        const tokenId = e.dataTransfer.getData('tokenId');
+        const token = document.querySelector(`[data-id="${tokenId}"]`);
+        const targetCell = e.target;
+
+        if (targetCell.dataset.index !== undefined) {
+            const targetIndex = targetCell.dataset.index;
+            const tokenData = tokens[tokenId];
+            const currentCell = gridElement.children[tokenData.position];
+
+            currentCell.removeChild(token);
+            targetCell.appendChild(token);
+            tokens[tokenId].position = targetIndex;
+        }
+    });
+}
+
+createGrid();
+setupDraggableTokens();
